@@ -173,12 +173,15 @@ Data e hora atuais: {data_atual}
 """
         return prompt.strip()
 
-    def _call_groq_llm(self, user_message):
+    def _call_groq_llm(self, user_message, api_key=None):
         """
         Executa a requisição HTTP para a API da Groq utilizando urllib.
         Mantém o histórico de mensagens multi-turn para contexto conversacional.
         """
-        if not self.groq_api_key:
+        key_to_use = (api_key or os.environ.get("GROQ_API_KEY", self.groq_api_key) or "").strip()
+        model_to_use = (os.environ.get("GROQ_MODEL", self.groq_model) or "").strip() or "llama-3.3-70b-versatile"
+
+        if not key_to_use:
             return None
 
         messages = [{"role": "system", "content": self._build_system_prompt()}]
@@ -189,9 +192,9 @@ Data e hora atuais: {data_atual}
         messages.append({"role": "user", "content": user_message})
 
         payload = {
-            "model": self.groq_model,
+            "model": model_to_use,
             "messages": messages,
-            "temperature": 0.4,
+            "temperature": 0.5,
             "max_tokens": 1024
         }
 
@@ -201,14 +204,14 @@ Data e hora atuais: {data_atual}
                 self.groq_api_url,
                 data=data_bytes,
                 headers={
-                    "Authorization": f"Bearer {self.groq_api_key}",
+                    "Authorization": f"Bearer {key_to_use}",
                     "Content-Type": "application/json",
                     "User-Agent": "SCENA-CulturalCuratorEngine/1.0"
                 },
                 method="POST"
             )
 
-            with urllib.request.urlopen(req, timeout=15) as response:
+            with urllib.request.urlopen(req, timeout=20) as response:
                 if response.status == 200:
                     resp_body = json.loads(response.read().decode("utf-8"))
                     resposta_texto = resp_body["choices"][0]["message"]["content"]
@@ -220,6 +223,10 @@ Data e hora atuais: {data_atual}
                 else:
                     print(f"[AVISO] Groq API retornou status {response.status}")
                     return None
+        except urllib.error.HTTPError as he:
+            err_body = he.read().decode("utf-8", errors="ignore")
+            print(f"[ERRO Groq HTTP {he.code}]: {err_body}")
+            return None
         except Exception as e:
             print(f"[AVISO] Erro na chamada da LLM Groq: {e}")
             return None
@@ -337,22 +344,26 @@ Data e hora atuais: {data_atual}
             self.messages_log[msg_id] = result
             return result
 
-        # 2. Tentativa com LLM Generativa (Groq API)
-        if self.groq_api_key:
-            resposta_llm = self._call_groq_llm(user_message_clean)
+        # 2. Obter chave da API dinamicamente
+        current_api_key = (os.environ.get("GROQ_API_KEY", self.groq_api_key) or "").strip()
+        current_model = (os.environ.get("GROQ_MODEL", self.groq_model) or "").strip() or "llama-3.3-70b-versatile"
+
+        # 3. Tentativa com LLM Generativa (Groq API)
+        if current_api_key:
+            resposta_llm = self._call_groq_llm(user_message_clean, api_key=current_api_key)
             if resposta_llm:
                 self.metrics["resolvidas_llm"] += 1
                 result = {
                     "message_id": msg_id,
                     "resposta": resposta_llm,
                     "origem": "llm_groq",
-                    "modelo": self.groq_model,
+                    "modelo": current_model,
                     "score": 1.0
                 }
                 self.messages_log[msg_id] = result
                 return result
 
-        # 3. Motor Léxico Local / Fallback Offline
+        # 4. Motor Léxico Local / Base de Conhecimento
         topico_encontrado, score = self._find_best_topic_offline(user_message_clean)
         if topico_encontrado:
             self.metrics["resolvidas_base"] += 1
@@ -366,7 +377,22 @@ Data e hora atuais: {data_atual}
             self.messages_log[msg_id] = result
             return result
 
-        # 4. Fallback Elegante
+        # 5. Se a chave não estiver configurada, orienta o usuário
+        if not current_api_key:
+            resposta_aviso = (
+                "⚠️ **Aviso de Configuração:** A chave de inteligência artificial (`GROQ_API_KEY`) ainda não foi detectada no ambiente da Vercel.\n\n"
+                "Para que eu possa gerar recomendações ilimitadas e personalizadas em tempo real com o modelo Llama-3, configure a variável **GROQ_API_KEY** nas configurações do projeto da Vercel (**Settings > Environment Variables**)."
+            )
+            result = {
+                "message_id": msg_id,
+                "resposta": resposta_aviso,
+                "origem": "sem_chave_ia",
+                "score": 0.0
+            }
+            self.messages_log[msg_id] = result
+            return result
+
+        # 6. Fallback Elegante
         self.metrics["fallbacks"] += 1
         resposta_fallback = self._get_fallback_response()
         result = {
