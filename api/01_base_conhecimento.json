@@ -1,0 +1,79 @@
+{
+  "empresa": "SCENA - Rede Social Cultural",
+  "descricao": "O SCENA é a rede social cultural definitiva para descobrir, avaliar, organizar e compartilhar o seu amor por filmes, séries, desenhos/animes, músicas, álbuns, livros e jogos. Uma plataforma viva de curadoria, conexões artísticas e inteligência artificial generativa.",
+  "topicos": [
+    {
+      "id": "sobre_scena",
+      "perguntas_chave": [
+        "O que é o SCENA?",
+        "Como funciona o SCENA?",
+        "Qual a proposta da rede social SCENA?",
+        "Quem criou o SCENA?",
+        "O SCENA é gratuito?"
+      ],
+      "resposta": "O **SCENA** é a sua nova rede social cultural desenvolvida para conectar quem ama arte e entretenimento:\n\n* 🎬 **Tudo em um só lugar:** Catalogação e avaliação de filmes, séries, desenhos/animes, músicas, álbuns, livros e jogos.\n* 🌟 **Diário & Diário Cultural:** Registre o que assistiu, leu, jogou ou ouviu com notas, críticas e datas.\n* 👥 **Comunidade Apaixonada:** Compartilhe resenhas, acompanhe o feed de amigos e descubra o que a comunidade está recomendando.\n* 🤖 **Curadoria com IA e Voz:** Descubra novas obras através do assistente cultural inteligente com suporte a texto e reconhecimento de voz."
+    },
+    {
+      "id": "categorias_culturais",
+      "perguntas_chave": [
+        "Quais categorias posso avaliar no SCENA?",
+        "Posso registrar animes e desenhos?",
+        "Dá para organizar livros e álbuns musicais?",
+        "Quais tipos de mídia o SCENA suporta?",
+        "Como catalogar séries e filmes?",
+        "Tem jogos e videogames no catálogo?"
+      ],
+      "resposta": "No **SCENA**, você organiza todo o seu universo cultural em 7 grandes categorias:\n\n1. 🎥 **Filmes:** De clássicos do cinema a estreias mundiais e cinema autoral.\n2. 📺 **Séries:** Controle episódios, temporadas e avalie finais de temporada.\n3. ⛩️ **Desenhos & Animes:** Animes sazonais, clássicos e produções independentes.\n4. 🎵 **Músicas:** Salve suas faixas favoritas e monte conexões sonoras.\n5. 💿 **Álbuns:** Avalie produções completas, discografias e descubra novos gêneros.\n6. 📚 **Livros:** Crie metas de leitura, resenhas literárias e registre citações.\n7. 🎮 **Jogos:** Registre títulos de PC e consoles, gameplays e análises narrativas."
+    },
+    {
+      "id": "avaliacoes_listas",
+      "perguntas_chave": [
+        "Como funciona o sistema de notas e avaliações?",
+        "Posso criar listas personalizadas no SCENA?",
+        "Como dar nota de 1 a 5 estrelas?",
+        "Como escrever uma resenha ou review?",
+        "Dá para marcar obras como 'Quero Ver' ou 'Já Vi'?"
+      ],
+      "resposta": "O sistema de organização e avaliações do **SCENA** é dinâmico e flexível:\n\n* ⭐ **Notas de 0.5 a 5 Estrelas:** Dê a sua pontuação precisa com direito a review em texto e tags de gênero/estilo.\n* 📝 **Listas Temáticas:** Crie listas públicas ou privadas (ex: *'Melhores Animes dos Anos 90'*, *'Livros que mudaram minha vida'*, *'RPGs com histórias inesquecíveis'*).\n* 📌 **Status de Consumo:** Marque obras como *Assistindo/Lendo/Jogando*, *Concluído*, *Quero ver/ler/jogar*, *Pausado* ou *Abandonado*.\n* 🏷️ **Favoritos e Vitrine:** Destaque suas 4 obras favoritas no seu perfil público."
+    },
+    {
+      "id": "comunidade_feed",
+      "perguntas_chave": [
+        "Como interagir com amigos no SCENA?",
+        "Tem feed de novidades?",
+        "Como seguir outros usuários?",
+        "Posso comentar nas resenhas de outras pessoas?",
+        "Existe clube do livro ou clube do filme?"
+      ],
+      "resposta": "A experiência comunitária é o coração do **SCENA**:\n\n* 📰 **Feed Social Ativo:** Veja em tempo real as notas, resenhas e listas criadas pelas pessoas que você segue.\n* 💬 **Debates Sem Spoilers:** Comente e debata teorias com proteção automática de avisos de spoilers.\n* 🤝 **Recomendações Entre Amigos:** Envie sugestões diretas de obras para o perfil dos seus amigos.\n* 🏆 **Desafios Culturais:** Participe de maratonas sazonais e metas anuais de cinema, leitura e jogos."
+    },
+    {
+      "id": "ia_curadoria_voz",
+      "perguntas_chave": [
+        "Como funciona a IA do SCENA?",
+        "Como pedir recomendações de filmes por voz?",
+        "A IA pode me sugerir livros parecidos com o que li?",
+        "Como usar o microfone para pesquisar?",
+        "A IA indica animes, álbuns musicais ou jogos?"
+      ],
+      "resposta": "A **Curadoria Inteligente do SCENA** combina modelos de IA Generativa com reconhecimento por voz:\n\n* 🎙️ **Comandos por Voz:** Toque no microfone e diga coisas como *'Me indique um suspense psicológico dos anos 2000'* ou *'Livros parecidos com 1984'*.\n* 🧠 **Recomendações Hiperpersonalizadas:** A IA analisa seu gosto cultural e sugere novas obras surpreendentes.\n* 🔍 **Descoberta Contextual:** Peça recomendações por época, gênero, diretor, artista ou clima emocional (ex: *'Músicas para relaxar num dia chuvoso'*)."
+    },
+    {
+      "id": "suporte_afesutech",
+      "perguntas_chave": [
+        "O que é o projeto AfesuTech?",
+        "Qual o objetivo da parceria Afesu Veleiros e SENAI-SP?",
+        "Como o chatbot foi construído?",
+        "Quais tecnologias foram utilizadas?",
+        "Quem são os alunos e instrutores?"
+      ],
+      "resposta": "O **SCENA Cultural** foi desenvolvido dentro do programa de formação tecnológica **AfesuTech**:\n\n* 🎓 **Instituições:** Uma iniciativa de excelência unindo **Afesu Veleiros** e **SENAI-SP** para capacitação em Inteligência Artificial Generativa e Full-Stack.\n* ⚡ **Stack Tecnológica:** Backend em Python (FastAPI, LLM Groq/Llama-3, RAG local) e Frontend em React, Vite, Lucide Icons e Web Speech API.\n* 💡 **Metodologia:** Desenvolvimento prático orientado a projetos reais de mercado e impacto social."
+    }
+  ],
+  "faq_rapido": [
+    "Me recomende um filme cult de ficção científica",
+    "Quais animes imperdíveis devo assistir?",
+    "Como funciona a parceria Afesu Veleiros / SENAI-SP?",
+    "Indique 3 livros clássicos e envolventes"
+  ]
+}
