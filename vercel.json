@@ -1,5 +1,6 @@
 {
-  "buildCommand": "npm run build --prefix front",
+  "installCommand": "npm --prefix front install",
+  "buildCommand": "npm --prefix front run build",
   "outputDirectory": "front/dist",
   "rewrites": [
     {

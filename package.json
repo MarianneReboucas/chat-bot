@@ -3,6 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "build": "npm run build --prefix front"
+    "postinstall": "npm --prefix front install",
+    "build": "npm --prefix front install && npm --prefix front run build"
   }
 }
